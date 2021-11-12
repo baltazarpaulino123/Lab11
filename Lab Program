@@ -1,0 +1,37 @@
+ int birthYear;
+ bool validYear;
+ bool validChar;
+ char again;
+
+            do 
+            {
+                Console.Clear();
+                
+                Console.WriteLine("\nWhat year were you born?");
+                validYear = int.TryParse(Console.ReadLine(), out birthYear);
+                
+                while (!validYear || birthYear < 1900 || birthYear > 2021)
+                {
+                    Console.WriteLine("Error! Please enter a valid year: ");
+                    validYear = int.TryParse(Console.ReadLine(), out birthYear);
+                }
+
+                if (birthYear <= 1921 && birthYear >= 1900)
+                {
+                    Console.WriteLine("\nYou are over 100 years old!");
+                }
+                else
+                {
+                    Console.WriteLine($"\nYou are approximately {2021-birthYear} years old.");
+                }
+
+                Console.WriteLine("Try again(Y/N)?");
+                validChar = char.TryParse(Console.ReadLine(), out again);
+                
+                while(!validChar || char.IsDigit(again))
+                {
+                    Console.WriteLine("Please enter a valid choice:");
+                    validChar = char.TryParse(Console.ReadLine(), out again);
+                }
+
+            } while(char.ToUpper(again) == 'Y');
